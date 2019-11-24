@@ -34,6 +34,7 @@
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGun)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +54,7 @@
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(147, 32);
             this.buttonCreate.TabIndex = 1;
-            this.buttonCreate.Text = "Создать";
+            this.buttonCreate.Text = "Зенитка";
             this.buttonCreate.UseVisualStyleBackColor = true;
             this.buttonCreate.Click += new System.EventHandler(this.ButtonCreate_Click);
             // 
@@ -101,11 +102,22 @@
             this.buttonRight.UseVisualStyleBackColor = true;
             this.buttonRight.Click += new System.EventHandler(this.ButtonMove_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(161, 8);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(143, 32);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "БТР";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // AntiaircraftGunForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1028, 564);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonLeft);
@@ -127,6 +139,7 @@
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonDown;
         private System.Windows.Forms.Button buttonRight;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -7,91 +7,37 @@ using System.Threading.Tasks;
 
 namespace LabTP
 {
-    class AntiaircraftGun
+    class AntiaircraftGun : Gun
     {
 
 
-        private float StartX;
-        private float StartY;
-        private int PictureWight;
-        private int PictureHight;
-        private const int GunWidth = 100;
-        private const int GunHidth = 60;
-        public int MaxSpeed { private set; get; }
-        public float Weight { private set; get; }
-        public Color MainColor { private set; get; }
+        
+        
         public Color DopColor { private set; get; }
         public bool FrontArmor { private set; get; }// передняя броня
         public bool MuzzleBraker { private set; get; }// дульный тормоз
         public bool Radar { private set; get; }//радар
-        public AntiaircraftGun(int maxSped, float weight, Color mainColor, Color dopColor,
-            bool frontArmor, bool muzzleBraker, bool radar)
+        public AntiaircraftGun(int maxSpeed, float weight, Color mainColor, Color dopColor,
+            bool frontArmor, bool muzzleBraker, bool radar): base(maxSpeed, weight, mainColor)
         {
-            MaxSpeed = maxSped;
-            Weight = weight;
-            MainColor = mainColor;
+            
             DopColor = dopColor;
             FrontArmor = frontArmor;
             MuzzleBraker = muzzleBraker;
             Radar = radar;
         }
-        public void SetPosition(int x, int y, int width, int height)
-        {
-            StartX = x;
-            StartY = y;
-            PictureWight = width;
-            PictureHight = height;
-        }
-        public void MoveGun(Direction direction)
-        {
-            float step = MaxSpeed * 100 / Weight;
-            switch (direction)
-            {
-                case Direction.Right:
-                    if (StartX + step < PictureWight - GunWidth)
-                    {
-                        StartX += step;
-                    }
-                    break;
-                case Direction.Left:
-                    if (StartX - step > 0)
-                    {
-                        StartX -= step;
-                    }
-                    break;
-                case Direction.Up:
-                    if (StartY - step > 0)
-                    {
-                        StartY -= step;
-                    }
-                    break;
-                case Direction.Down:
-                    if (StartY + step < PictureHight - GunHidth)
-                    {
-                        StartY += step;
-                    }
-                    break;
 
-            }
 
-        }
-        public void DrawGun(Graphics g)
+        public override void DrawGun(Graphics g)
         {
 
             Brush br = new SolidBrush(MainColor);
-            Point point1 = new Point((int)StartX - 40, (int)StartY + 10);
-            Point point2 = new Point((int)StartX + 40, (int)StartY + 10);
-            Point point3 = new Point((int)StartX + 45, (int)StartY + 25);
-            Point point4 = new Point((int)StartX - 45, (int)StartY + 25);
-            Point[] trapezePoints = { point1, point2, point3, point4 };
-            g.FillPolygon(br, trapezePoints);
+            
 
-
+            base.DrawGun(g);
 
             Brush brBc = new SolidBrush(Color.Black);
-            g.FillEllipse(brBc, StartX - 30, StartY + 20, 15, 15);
-            g.FillEllipse(brBc, StartX + 20, StartY + 20, 15, 15);
-            g.FillRectangle(brBc, StartX, StartY, 10, 10);
+            
 
             Point pointG1 = new Point((int)StartX + 15, (int)StartY - 5);
             Point pointG2 = new Point((int)StartX + 35, (int)StartY - 25);
@@ -128,7 +74,7 @@ namespace LabTP
             }
 
 
-
+            
 
 
 
