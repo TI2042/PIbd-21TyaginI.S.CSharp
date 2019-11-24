@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace LabTP
 {
+    public delegate void gunDelegate(IAntiaircraftGun gun);
     static class Program
     {
         /// <summary>

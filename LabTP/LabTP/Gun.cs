@@ -28,12 +28,7 @@ namespace LabTP
             Point point4 = new Point((int)StartX - 45, (int)StartY + 25);
             Point[] trapezePoints = { point1, point2, point3, point4 };
             g.FillPolygon(br, trapezePoints);
-
-
             
-            
-
-
             Brush brBc = new SolidBrush(Color.Black);
             g.FillEllipse(brBc, StartX - 30, StartY + 20, 15, 15);
             g.FillEllipse(brBc, StartX + 20, StartY + 20, 15, 15);

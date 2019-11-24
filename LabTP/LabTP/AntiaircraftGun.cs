@@ -72,15 +72,11 @@ namespace LabTP
                 Point[] mB = { pointM1, pointM2, pointM3, pointM4 };
                 g.FillPolygon(brGr, mB);
             }
-
-
             
-
-
-
-
-
         }
-
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+        }
     }
 }
