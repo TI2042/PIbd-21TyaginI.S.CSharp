@@ -53,6 +53,5 @@ namespace LabTP
             Draw();
         }
 
-
     }
 }
