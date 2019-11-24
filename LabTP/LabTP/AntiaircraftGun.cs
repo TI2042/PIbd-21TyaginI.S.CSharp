@@ -9,10 +9,6 @@ namespace LabTP
 {
     class AntiaircraftGun : Gun
     {
-
-
-        
-        
         public Color DopColor { private set; get; }
         public bool FrontArmor { private set; get; }// передняя броня
         public bool MuzzleBraker { private set; get; }// дульный тормоз
@@ -20,32 +16,40 @@ namespace LabTP
         public AntiaircraftGun(int maxSpeed, float weight, Color mainColor, Color dopColor,
             bool frontArmor, bool muzzleBraker, bool radar): base(maxSpeed, weight, mainColor)
         {
-            
+
             DopColor = dopColor;
             FrontArmor = frontArmor;
             MuzzleBraker = muzzleBraker;
             Radar = radar;
         }
 
+        public AntiaircraftGun(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 7)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                FrontArmor = Convert.ToBoolean(strs[4]);
+                MuzzleBraker = Convert.ToBoolean(strs[5]);
+                Radar = Convert.ToBoolean(strs[6]);
+            }
+        }
 
         public override void DrawGun(Graphics g)
         {
 
-            Brush br = new SolidBrush(MainColor);
-            
-
+            Brush br = new SolidBrush(MainColor);           
             base.DrawGun(g);
-
-            Brush brBc = new SolidBrush(Color.Black);
-            
-
+            Brush brBc = new SolidBrush(Color.Black);            
             Point pointG1 = new Point((int)StartX + 15, (int)StartY - 5);
             Point pointG2 = new Point((int)StartX + 35, (int)StartY - 25);
             Point pointG3 = new Point((int)StartX + 40, (int)StartY - 20);
             Point pointG4 = new Point((int)StartX + 20, (int)StartY);
             Point[] Guns = { pointG1, pointG2, pointG3, pointG4 };
             g.FillPolygon(brBc, Guns);
-
             if (Radar)
             {
                 Rectangle rect = new Rectangle((int)StartX + 10, (int)StartY - 25, 10, 10);
@@ -72,11 +76,16 @@ namespace LabTP
                 Point[] mB = { pointM1, pointM2, pointM3, pointM4 };
                 g.FillPolygon(brGr, mB);
             }
-            
+
         }
         public void SetDopColor(Color color)
         {
             DopColor = color;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + ";" + DopColor.Name + ";" + FrontArmor  + ";" + MuzzleBraker + ";" + Radar;
         }
     }
 }

@@ -24,7 +24,7 @@ namespace LabTP
                 listBoxLevels.Items.Add("Уровень "+(i+1));
             }
             listBoxLevels.SelectedIndex = 0;
-            
+
         }
         private void Draw()
         {
@@ -35,7 +35,7 @@ namespace LabTP
                 bs[listBoxLevels.SelectedIndex].Draw(gr);
                 pictureBoxBase.Image = bmp;
             }
-            
+
         }
         private void buttonSetCar_Click(object sender, EventArgs e)
         {
@@ -45,7 +45,7 @@ namespace LabTP
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     var gun = new Gun(100, 1000, dialog.Color);
-                    
+
                     int place = bs[listBoxLevels.SelectedIndex] * gun;
                     if (place == -1)
                     {
@@ -55,7 +55,7 @@ namespace LabTP
                 }
             }
         }
- 
+
         private void buttonSetSportCar_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
@@ -127,6 +127,36 @@ namespace LabTP
             }
         }
 
-        
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (bs.SaveData(saveFileDialog.FileName))
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Не сохранилось", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (bs.LoadData(openFileDialog.FileName))
+                {
+                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                Draw();
+            }
+        }
+
     }
 }

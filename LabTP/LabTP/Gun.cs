@@ -19,6 +19,17 @@ namespace LabTP
             MainColor = mainColor;
         }
 
+        public Gun(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
+        }
+
         public override void DrawGun(Graphics g)
         {
             Brush br = new SolidBrush(MainColor);
@@ -28,7 +39,7 @@ namespace LabTP
             Point point4 = new Point((int)StartX - 45, (int)StartY + 25);
             Point[] trapezePoints = { point1, point2, point3, point4 };
             g.FillPolygon(br, trapezePoints);
-            
+
             Brush brBc = new SolidBrush(Color.Black);
             g.FillEllipse(brBc, StartX - 30, StartY + 20, 15, 15);
             g.FillEllipse(brBc, StartX + 20, StartY + 20, 15, 15);
@@ -48,8 +59,6 @@ namespace LabTP
             Point[] BTRPoints = { pointBTR1, pointBTR2, pointBTR3, pointBTR4 };
             g.FillPolygon(br, BTRPoints);
 
-            
-            
         }
 
         public override void MoveGun(Direction direction)
@@ -82,6 +91,11 @@ namespace LabTP
                     }
                     break;
             }
+        }
+
+        public override string ToString()
+        {
+            return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
         }
     }
 }

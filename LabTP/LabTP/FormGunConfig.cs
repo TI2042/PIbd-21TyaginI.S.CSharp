@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace LabTP
 {
     public partial class FormGunConfig : Form
@@ -106,7 +105,7 @@ namespace LabTP
                 case "БТР":
                     gun = new Gun(100, 500, Color.White);
                     break;
-                
+
             }
             DrawGun();
         }
@@ -125,6 +124,5 @@ namespace LabTP
             Close();
         }
 
-       
     }
 }
