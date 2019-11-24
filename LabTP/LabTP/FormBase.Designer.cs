@@ -50,6 +50,7 @@
             this.pictureBoxBase.Size = new System.Drawing.Size(1062, 641);
             this.pictureBoxBase.TabIndex = 0;
             this.pictureBoxBase.TabStop = false;
+            
             // 
             // button1
             // 

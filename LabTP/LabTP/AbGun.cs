@@ -17,9 +17,13 @@ namespace LabTP
         public float Weight { protected set; get; }
         public Color MainColor { protected set; get; }
 
+
         public abstract void DrawGun(Graphics g);
 
+
+
         public abstract void MoveGun(Direction direction);
+       
 
         public void SetPosition(int x, int y, int width, int height)
         {
