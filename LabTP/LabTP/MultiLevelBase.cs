@@ -46,34 +46,38 @@ namespace LabTP
                 streamWriter.WriteLine($"CountLevels:{baseStages.Count}");
                 foreach (var level in baseStages)
                 {
-                    
+
                     streamWriter.WriteLine("Level");
                     for (int i = 0; i < countPlaces; i++)
                     {
-                        var gun = level[i];
-                        if (gun != null)
+                        try
                         {
-                           
-                            if (gun.GetType().Name == "Gun")
+                            var gun = level[i];
+                            if (gun != null)
                             {
-                                streamWriter.WriteLine($"{i}:Gun:" + gun);
-                            }
-                            if (gun.GetType().Name == "AntiaircraftGun")
-                            {
-                                streamWriter.WriteLine($"{i}:AntiaircraftGun:" + gun);
+
+                                if (gun.GetType().Name == "Gun")
+                                {
+                                    streamWriter.WriteLine($"{i}:Gun:" + gun);
+                                }
+                                if (gun.GetType().Name == "AntiaircraftGun")
+                                {
+                                    streamWriter.WriteLine($"{i}:AntiaircraftGun:" + gun);
+                                }
                             }
                         }
+                        finally { }
                     }
                 }
             }
             return true;
         }
-       
+
         public bool LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException(); ;
             }
             string bufferTextFromFile = "";
             using (StreamReader reader = new StreamReader(File.OpenRead(filename)))
@@ -113,8 +117,6 @@ namespace LabTP
             }
             return true;
         }
-            
-            
-        
+
     }    
 }

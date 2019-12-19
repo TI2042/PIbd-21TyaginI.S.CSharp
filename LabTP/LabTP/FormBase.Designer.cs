@@ -190,7 +190,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormBase";
             this.Text = "FormBase";
-
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBase)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
