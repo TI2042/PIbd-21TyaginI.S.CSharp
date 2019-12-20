@@ -9,10 +9,6 @@ namespace LabTP
 {
     class AntiaircraftGun : Gun
     {
-
-
-        
-        
         public Color DopColor { private set; get; }
         public bool FrontArmor { private set; get; }// передняя броня
         public bool MuzzleBraker { private set; get; }// дульный тормоз
@@ -30,15 +26,10 @@ namespace LabTP
 
         public override void DrawGun(Graphics g)
         {
-
             Brush br = new SolidBrush(MainColor);
-            
-
             base.DrawGun(g);
-
             Brush brBc = new SolidBrush(Color.Black);
             
-
             Point pointG1 = new Point((int)StartX + 15, (int)StartY - 5);
             Point pointG2 = new Point((int)StartX + 35, (int)StartY - 25);
             Point pointG3 = new Point((int)StartX + 40, (int)StartY - 20);
@@ -72,14 +63,6 @@ namespace LabTP
                 Point[] mB = { pointM1, pointM2, pointM3, pointM4 };
                 g.FillPolygon(brGr, mB);
             }
-
-
-            
-
-
-
-
-
         }
 
     }
