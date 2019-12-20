@@ -117,6 +117,9 @@ namespace LabTP
             }
             return true;
         }
-
+        public void Sort()
+        {
+            baseStages.Sort();
+        }
     }    
 }

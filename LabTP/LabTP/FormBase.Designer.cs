@@ -43,6 +43,7 @@
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.btnSort = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBase)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
@@ -110,7 +111,7 @@
             this.listBoxLevels.ItemHeight = 16;
             this.listBoxLevels.Location = new System.Drawing.Point(1077, 140);
             this.listBoxLevels.Name = "listBoxLevels";
-            this.listBoxLevels.Size = new System.Drawing.Size(148, 164);
+            this.listBoxLevels.Size = new System.Drawing.Size(148, 116);
             this.listBoxLevels.TabIndex = 4;
             this.listBoxLevels.SelectedIndexChanged += new System.EventHandler(this.listBoxLevels_SelectedIndexChanged);
             // 
@@ -176,11 +177,22 @@
             // 
             this.saveFileDialog.Filter = "txt file | *.txt";
             // 
+            // btnSort
+            // 
+            this.btnSort.Location = new System.Drawing.Point(1077, 268);
+            this.btnSort.Name = "btnSort";
+            this.btnSort.Size = new System.Drawing.Size(148, 36);
+            this.btnSort.TabIndex = 8;
+            this.btnSort.Text = "Сортировать";
+            this.btnSort.UseVisualStyleBackColor = true;
+            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
+            // 
             // FormBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1249, 654);
+            this.Controls.Add(this.btnSort);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBoxLevels);
@@ -218,5 +230,6 @@
         private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.Button btnSort;
     }
 }
