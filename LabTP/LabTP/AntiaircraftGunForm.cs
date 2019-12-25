@@ -51,8 +51,6 @@ namespace LabTP
                     break;
             }
             Draw();
-        }
-
-        
+        }      
     }
 }
