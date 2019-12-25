@@ -8,18 +8,15 @@ using System.Threading.Tasks;
 namespace LabTP
 {
     public class Base<T> where T: class, IAntiaircraftGun
-    {
-        
+    {     
         private T[] _places;
         private int PictureWidth { get; set; }
         private int PictureHeight { get; set; }
         private const int _placeSizeWidth = 210;
         private const int _placeSizeHeight = 80;
         
-
         public Base(int sizes, int pictureWidth, int pictureHeight)
-        {
-           
+        {           
             _places = new T [sizes];
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
@@ -74,8 +71,7 @@ namespace LabTP
         }
         private void DrawBase(Graphics g)
         {
-           
-                Pen pen = new Pen(Color.Black, 3);
+             Pen pen = new Pen(Color.Black, 3);
             //границыпраковки
             g.DrawRectangle(pen, 0, 0, (_places.Length / 5) * _placeSizeWidth, 480);
             for (int i = 0; i < _places.Length / 5; i++)
@@ -87,8 +83,7 @@ namespace LabTP
                     g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight,i * _placeSizeWidth + 110, j * _placeSizeHeight);
                 } g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
             }
-        }
-            
+        }         
     }
 }
 
