@@ -15,6 +15,7 @@ namespace LabTP
         FormGunConfig form;
         MultiLevelBase bs;
         private const int countLevel = 5;
+        
         public FormBase()
         {
             InitializeComponent();
@@ -24,80 +25,61 @@ namespace LabTP
                 listBoxLevels.Items.Add("Уровень "+(i+1));
             }
             listBoxLevels.SelectedIndex = 0;
-
         }
         private void Draw()
-        {
-            if(listBoxLevels.SelectedIndex>-1)
+        {         
+            Bitmap bmp = new Bitmap(pictureBoxBase.Width, pictureBoxBase.Height);
+            Graphics gr = Graphics.FromImage(bmp);
+            bs.Draw(gr);
+            pictureBoxBase.Image = bmp;     
+        }
+        private void buttonSetGun_Click(object sender, EventArgs e)
+        {            
+            ColorDialog dialog = new ColorDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
                 Bitmap bmp = new Bitmap(pictureBoxBase.Width, pictureBoxBase.Height);
                 Graphics gr = Graphics.FromImage(bmp);
                 bs[listBoxLevels.SelectedIndex].Draw(gr);
                 pictureBoxBase.Image = bmp;
             }
-
         }
-        private void buttonSetCar_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
+ 
+        private void buttonSetAntiaircraftGun_Click(object sender, EventArgs e)
+        {           
+            ColorDialog dialog = new ColorDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
+                ColorDialog dialogDop = new ColorDialog();
+                if (dialogDop.ShowDialog() == DialogResult.OK)
                 {
                     var gun = new Gun(100, 1000, dialog.Color);
-
                     int place = bs[listBoxLevels.SelectedIndex] * gun;
                     if (place == -1)
                     {
-                        MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Нет свободныхмест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     Draw();
                 }
-            }
+            }         
         }
-
         private void buttonSetSportCar_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
+                var gun = bs / Convert.ToInt32(maskedTextBox.Text);
+                if (gun != null)
                 {
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var gun = new AntiaircraftGun(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
-                        int place = bs[listBoxLevels.SelectedIndex] * gun;
-                        if (place == -1)
-                        {
-                            MessageBox.Show("Нет свободныхмест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        Draw();
-                    }
+                    Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
+                    Graphics gr = Graphics.FromImage(bmp);
+                    gun.SetPosition(50, 50, pictureBoxTake.Width, pictureBoxTake.Height);
+                    gun.DrawGun(gr);
+                    pictureBoxTake.Image = bmp;
                 }
-            }
-        }
-        private void buttonTakeCar_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                if (maskedTextBox.Text != "")
+                else
                 {
-                    var gun = bs[listBoxLevels.SelectedIndex] / Convert.ToInt32(maskedTextBox.Text);
-                    if (gun != null)
-                    {
-                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
-                        Graphics gr = Graphics.FromImage(bmp);
-                        gun.SetPosition(50, 50, pictureBoxTake.Width, pictureBoxTake.Height);
-                        gun.DrawGun(gr);
-                        pictureBoxTake.Image = bmp;
-                    }
-                    else
-                    {
-                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
-                        pictureBoxTake.Image = bmp;
-                    }
-                    Draw();
+                    Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
+                    pictureBoxTake.Image = bmp;
                 }
             }
         }
@@ -122,11 +104,10 @@ namespace LabTP
                 }
                 else
                 {
-                    MessageBox.Show("Машинунеудалосьпоставить");
+                    MessageBox.Show("Машину неудалось поставить");
                 }
             }
         }
-
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -157,6 +138,5 @@ namespace LabTP
                 Draw();
             }
         }
-
     }
 }
