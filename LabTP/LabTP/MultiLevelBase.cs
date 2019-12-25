@@ -30,7 +30,6 @@ namespace LabTP
                 if(ind > -1 && ind< baseStages.Count)
                 {
                     return baseStages[ind];
-
                 }
                 return null;
             }
@@ -46,7 +45,6 @@ namespace LabTP
                 streamWriter.WriteLine($"CountLevels:{baseStages.Count}");
                 foreach (var level in baseStages)
                 {
-
                     streamWriter.WriteLine("Level");
                     for (int i = 0; i < countPlaces; i++)
                     {
@@ -55,7 +53,6 @@ namespace LabTP
                             var gun = level[i];
                             if (gun != null)
                             {
-
                                 if (gun.GetType().Name == "Gun")
                                 {
                                     streamWriter.WriteLine($"{i}:Gun:" + gun);
