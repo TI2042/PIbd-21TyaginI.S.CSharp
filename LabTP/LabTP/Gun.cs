@@ -52,6 +52,7 @@ namespace LabTP
             Point pointBTR4 = new Point((int)StartX - 20, (int)StartY - 10);
             Point[] BTRPoints = { pointBTR1, pointBTR2, pointBTR3, pointBTR4 };
             g.FillPolygon(br, BTRPoints);
+            g.FillPolygon(br, BTRPoints);            
 
             
             
