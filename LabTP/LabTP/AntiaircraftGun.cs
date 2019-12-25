@@ -9,6 +9,7 @@ namespace LabTP
 {
     class AntiaircraftGun : Gun
     {
+
         public Color DopColor { private set; get; }
         public bool FrontArmor { private set; get; }// передняя броня
         public bool MuzzleBraker { private set; get; }// дульный тормоз

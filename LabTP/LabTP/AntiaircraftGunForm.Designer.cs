@@ -1,3 +1,4 @@
+
 ﻿namespace LabTP
 {
     partial class AntiaircraftGunForm
@@ -129,4 +130,3 @@
         private System.Windows.Forms.Button buttonRight;
     }
 }
-
