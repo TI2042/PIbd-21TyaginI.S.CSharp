@@ -29,11 +29,6 @@ namespace LabTP
             Point[] trapezePoints = { point1, point2, point3, point4 };
             g.FillPolygon(br, trapezePoints);
 
-
-            
-            
-
-
             Brush brBc = new SolidBrush(Color.Black);
             g.FillEllipse(brBc, StartX - 30, StartY + 20, 15, 15);
             g.FillEllipse(brBc, StartX + 20, StartY + 20, 15, 15);
@@ -52,10 +47,7 @@ namespace LabTP
             Point pointBTR4 = new Point((int)StartX - 20, (int)StartY - 10);
             Point[] BTRPoints = { pointBTR1, pointBTR2, pointBTR3, pointBTR4 };
             g.FillPolygon(br, BTRPoints);
-            g.FillPolygon(br, BTRPoints);            
-
-            
-            
+            g.FillPolygon(br, BTRPoints);                  
         }
 
         public override void MoveGun(Direction direction)
