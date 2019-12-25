@@ -104,13 +104,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(161, 8);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(143, 32);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "БТР";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonCreateGun.Location = new System.Drawing.Point(161, 8);
+            this.buttonCreateGun.Name = "button1";
+            this.buttonCreateGun.Size = new System.Drawing.Size(143, 32);
+            this.buttonCreateGun.TabIndex = 6;
+            this.buttonCreateGun.Text = "БТР";
+            this.buttonCreateGun.UseVisualStyleBackColor = true;
+            this.buttonCreateGun.Click += new System.EventHandler(this.buttonCreateGun_Click);
             // 
             // AntiaircraftGunForm
             // 
@@ -139,7 +139,7 @@
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonDown;
         private System.Windows.Forms.Button buttonRight;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonCreateGun;
     }
 }
 
