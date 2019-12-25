@@ -1,4 +1,5 @@
-﻿using System;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace LabTP
                 baseStages.Add(new Base<IAntiaircraftGun>(countPlaces, pictureWidth, pictureHeight));
             }
         }
+        
         public Base<IAntiaircraftGun> this [int ind]
         {
             get
@@ -26,12 +28,9 @@ namespace LabTP
                 if(ind > -1 && ind< baseStages.Count)
                 {
                     return baseStages[ind];
-
                 }
                 return null;
             }
         }
-
-    }
-    
+    }  
 }
