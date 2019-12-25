@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace LabTP
 {
-
     public enum Direction
     {
         Up,
@@ -14,5 +13,4 @@ namespace LabTP
         Left,
         Right,
     }
-
 }
