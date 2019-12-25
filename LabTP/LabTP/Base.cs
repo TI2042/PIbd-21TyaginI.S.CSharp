@@ -11,12 +11,9 @@ namespace LabTP
     public class Base<T> : IEnumerator<T>, IEnumerable<T>, IComparable<Base<T>> where T: class, IAntiaircraftGun
     {
         private Dictionary<int, T> _places;
-
         private int PictureWidth { get; set; }
         private int PictureHeight { get; set; }
-
         private int _currentIndex;
-
         private const int _placeSizeWidth = 210;
         private const int _placeSizeHeight = 80;
         private int _maxCount;
@@ -29,13 +26,12 @@ namespace LabTP
             }
         }
 
-public Base(int sizes, int pictureWidth, int pictureHeight)
+        public Base(int sizes, int pictureWidth, int pictureHeight)
         {
             _maxCount = sizes;
             _places = new Dictionary<int, T>();
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
-
         }
         public static int operator + (Base<T> p, T gun)
         {
@@ -61,40 +57,45 @@ public Base(int sizes, int pictureWidth, int pictureHeight)
 
         public static T operator -(Base<T> p, int index)
         {
-            if(!p.CheckFreePlace(index))
+            if (index < 0 || index > p._places.Length)
+            {
+                return null;
+            }
+            if (!p.CheckFreePlace(index))
             {
                 T gun = p._places[index];
-                p._places.Remove(index);
+                p._places= null;
                 return gun;
             }
             throw new BaseNotFoundException(index);
         }
         private bool CheckFreePlace(int index)
         {
-            return !_places.ContainsKey(index);
+            return _places[index]==null;
         }
         public void Draw(Graphics g)
         {
             DrawBase(g);
-            var keys = _places.Keys.ToList();
-            for (int i = 0; i < keys.Count; i++)
+            
+            for (int i = 0; i < _places.Length; i++)
             {
-                _places[keys[i]].DrawGun(g);
+                if (!CheckFreePlace(i))
+                {
+                    _places[i].DrawGun(g);
+                }
             }
         }
         private void DrawBase(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 3);
-
             g.DrawRectangle(pen, 0, 0, (_maxCount / 5) * _placeSizeWidth, 480);
             for (int i = 0; i < _maxCount / 5; i++)
             {
                 for (int j = 0; j < 6; ++j)
                 {
                     g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight,i * _placeSizeWidth + 110, j * _placeSizeHeight);
-                }
+                } 
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
-                g.DrawLine(pen, i * _placeSizeWidth+110, 0, i * _placeSizeWidth+110, 400);
             }
         }
 
