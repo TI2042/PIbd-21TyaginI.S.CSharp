@@ -25,16 +25,8 @@ namespace LabTP
 
         public override void DrawGun(Graphics g)
         {
-
             Brush br = new SolidBrush(MainColor);
             base.DrawGun(g);
-            Point point1 = new Point((int)StartX - 40, (int)StartY + 10);
-            Point point2 = new Point((int)StartX + 40, (int)StartY + 10);
-            Point point3 = new Point((int)StartX + 45, (int)StartY + 25);
-            Point point4 = new Point((int)StartX - 45, (int)StartY + 25);
-            Point[] trapezePoints = { point1, point2, point3, point4 };
-            g.FillPolygon(br, trapezePoints);
-
             Brush brBc = new SolidBrush(Color.Black);
 
             Point pointG1 = new Point((int)StartX + 15, (int)StartY - 5);
