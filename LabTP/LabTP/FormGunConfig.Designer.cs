@@ -30,11 +30,11 @@
         {
             this.labelGun = new System.Windows.Forms.Label();
             this.labelBTR = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxType = new System.Windows.Forms.GroupBox();
             this.panelGun = new System.Windows.Forms.Panel();
             this.pictureBoxGun = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelDopColor = new System.Windows.Forms.Label();
+            this.labelColor = new System.Windows.Forms.Label();
             this.panelWhite = new System.Windows.Forms.Panel();
             this.panelBlack = new System.Windows.Forms.Panel();
             this.panelRed = new System.Windows.Forms.Panel();
@@ -44,7 +44,7 @@
             this.panelAqua = new System.Windows.Forms.Panel();
             this.panelGreen = new System.Windows.Forms.Panel();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panelGun.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGun)).BeginInit();
@@ -72,24 +72,24 @@
             this.labelBTR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelBTR.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lableBTR_MouseDown);
             // 
-            // groupBox1
+            // groupBoxType
             // 
-            this.groupBox1.Controls.Add(this.labelGun);
-            this.groupBox1.Controls.Add(this.labelBTR);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(184, 190);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Тип";
+            this.groupBoxType.Controls.Add(this.labelGun);
+            this.groupBoxType.Controls.Add(this.labelBTR);
+            this.groupBoxType.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxType.Name = "groupBoxType";
+            this.groupBoxType.Size = new System.Drawing.Size(184, 190);
+            this.groupBoxType.TabIndex = 3;
+            this.groupBoxType.TabStop = false;
+            this.groupBoxType.Text = "Тип";
             // 
             // panelGun
             // 
             this.panelGun.AllowDrop = true;
             this.panelGun.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelGun.Controls.Add(this.pictureBoxGun);
-            this.panelGun.Controls.Add(this.label2);
-            this.panelGun.Controls.Add(this.label1);
+            this.panelGun.Controls.Add(this.labelDopColor);
+            this.panelGun.Controls.Add(this.labelColor);
             this.panelGun.Location = new System.Drawing.Point(202, 12);
             this.panelGun.Name = "panelGun";
             this.panelGun.Size = new System.Drawing.Size(333, 340);
@@ -108,31 +108,31 @@
             this.pictureBoxGun.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelGun_DragDrop);
             this.pictureBoxGun.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelGun_DragEnter);
             // 
-            // label2
+            // labelDopColor
             // 
-            this.label2.AllowDrop = true;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Location = new System.Drawing.Point(34, 261);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(267, 34);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Доп. цвет";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.DragDrop += new System.Windows.Forms.DragEventHandler(this.labelDopColor_DragDrop);
-            this.label2.DragEnter += new System.Windows.Forms.DragEventHandler(this.labelBaseColor_DragEnter);
+            this.labelDopColor.AllowDrop = true;
+            this.labelDopColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelDopColor.Location = new System.Drawing.Point(34, 261);
+            this.labelDopColor.Name = "labelDopColor";
+            this.labelDopColor.Size = new System.Drawing.Size(267, 34);
+            this.labelDopColor.TabIndex = 4;
+            this.labelDopColor.Text = "Доп. цвет";
+            this.labelDopColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelDopColor.DragDrop += new System.Windows.Forms.DragEventHandler(this.labelDopColor_DragDrop);
+            this.labelDopColor.DragEnter += new System.Windows.Forms.DragEventHandler(this.labelBaseColor_DragEnter);
             // 
-            // label1
+            // labelColor
             // 
-            this.label1.AllowDrop = true;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(34, 209);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(267, 37);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Основной цвет";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.DragDrop += new System.Windows.Forms.DragEventHandler(this.labelBaseColor_DragDrop);
-            this.label1.DragEnter += new System.Windows.Forms.DragEventHandler(this.labelBaseColor_DragEnter);
+            this.labelColor.AllowDrop = true;
+            this.labelColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelColor.Location = new System.Drawing.Point(34, 209);
+            this.labelColor.Name = "labelColor";
+            this.labelColor.Size = new System.Drawing.Size(267, 37);
+            this.labelColor.TabIndex = 3;
+            this.labelColor.Text = "Основной цвет";
+            this.labelColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelColor.DragDrop += new System.Windows.Forms.DragEventHandler(this.labelBaseColor_DragDrop);
+            this.labelColor.DragEnter += new System.Windows.Forms.DragEventHandler(this.labelBaseColor_DragEnter);
             // 
             // panelWhite
             // 
@@ -223,22 +223,22 @@
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // buttonAdd
             // 
-            this.button1.Location = new System.Drawing.Point(18, 208);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(161, 48);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Добавить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.buttonOk_Click);
+            this.buttonAdd.Location = new System.Drawing.Point(18, 208);
+            this.buttonAdd.Name = "button1";
+            this.buttonAdd.Size = new System.Drawing.Size(161, 48);
+            this.buttonAdd.TabIndex = 14;
+            this.buttonAdd.Text = "Добавить";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // FormGunConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(801, 434);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.panelGreen);
             this.Controls.Add(this.panelAqua);
@@ -249,11 +249,11 @@
             this.Controls.Add(this.panelBlack);
             this.Controls.Add(this.panelWhite);
             this.Controls.Add(this.panelGun);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxType);
             this.Name = "FormGunConfig";
             this.Text = "FormGunConfig";
            
-            this.groupBox1.ResumeLayout(false);
+            this.groupBoxType.ResumeLayout(false);
             this.panelGun.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGun)).EndInit();
             this.ResumeLayout(false);
@@ -264,10 +264,10 @@
 
         private System.Windows.Forms.Label labelGun;
         private System.Windows.Forms.Label labelBTR;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxType;
         private System.Windows.Forms.Panel panelGun;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelDopColor;
+        private System.Windows.Forms.Label labelColor;
         private System.Windows.Forms.Panel panelWhite;
         private System.Windows.Forms.Panel panelBlack;
         private System.Windows.Forms.Panel panelRed;
@@ -277,7 +277,7 @@
         private System.Windows.Forms.Panel panelAqua;
         private System.Windows.Forms.Panel panelGreen;
         private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.PictureBox pictureBoxGun;
     }
 }
