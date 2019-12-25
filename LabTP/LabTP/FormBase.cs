@@ -34,8 +34,7 @@ namespace LabTP
                 var gun = new Gun(100, 1000, dialog.Color);                  
                 int place = bs * gun;                    
                 Draw();
-            }
-            
+            }  
         }
  
         private void buttonSetAntiaircraftGun_Click(object sender, EventArgs e)
