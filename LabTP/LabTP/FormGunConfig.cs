@@ -123,8 +123,6 @@ namespace LabTP
         {
             eventAddGun?.Invoke(gun);
             Close();
-        }
-
-       
+        }    
     }
 }
