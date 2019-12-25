@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -16,7 +16,6 @@ namespace LabTP
         public AntiaircraftGun(int maxSpeed, float weight, Color mainColor, Color dopColor,
             bool frontArmor, bool muzzleBraker, bool radar): base(maxSpeed, weight, mainColor)
         {
-
             DopColor = dopColor;
             FrontArmor = frontArmor;
             MuzzleBraker = muzzleBraker;
@@ -62,8 +61,6 @@ namespace LabTP
                 Point[] mB = { pointM1, pointM2, pointM3, pointM4 };
                 g.FillPolygon(brGr, mB);
             }
-
         }
-
     }
 }
