@@ -53,7 +53,7 @@ namespace LabTP
             Draw();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonCreateGun_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             gun = new Gun(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.DarkGreen);
