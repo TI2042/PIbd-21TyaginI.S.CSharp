@@ -16,7 +16,7 @@ namespace LabTP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AntiaircraftGunForm());
+            Application.Run(new FormBase());
         }
     }
 }

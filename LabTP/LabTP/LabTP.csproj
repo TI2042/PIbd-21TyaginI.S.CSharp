@@ -48,19 +48,20 @@
   <ItemGroup>
     <Compile Include="AbGun.cs" />
     <Compile Include="AntiaircraftGun.cs" />
+    <Compile Include="Base.cs" />
     <Compile Include="Direction.cs" />
-    <Compile Include="AntiaircraftGunForm.cs">
+    <Compile Include="FormBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AntiaircraftGunForm.Designer.cs">
-      <DependentUpon>AntiaircraftGunForm.cs</DependentUpon>
+    <Compile Include="FormBase.Designer.cs">
+      <DependentUpon>FormBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Gun.cs" />
     <Compile Include="IAntiaircraftGun.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AntiaircraftGunForm.resx">
-      <DependentUpon>AntiaircraftGunForm.cs</DependentUpon>
+    <EmbeddedResource Include="FormBase.resx">
+      <DependentUpon>FormBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

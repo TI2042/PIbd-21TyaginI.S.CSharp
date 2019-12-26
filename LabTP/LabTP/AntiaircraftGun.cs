@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,22 +9,14 @@ namespace LabTP
 {
     class AntiaircraftGun : Gun
     {
-        private float StartX;
-        private float StartY;
-        private int PictureWight;
-        private int PictureHight;
-        private const int GunWidth = 100;
-        private const int GunHidth = 60;
-        public int MaxSpeed { private set; get; }
-        public float Weight { private set; get; }
-        public Color MainColor { private set; get; }
+
         public Color DopColor { private set; get; }
         public bool FrontArmor { private set; get; }// передняя броня
         public bool MuzzleBraker { private set; get; }// дульный тормоз
         public bool Radar { private set; get; }//радар
         public AntiaircraftGun(int maxSpeed, float weight, Color mainColor, Color dopColor,
             bool frontArmor, bool muzzleBraker, bool radar): base(maxSpeed, weight, mainColor)
-        {            
+        {
             DopColor = dopColor;
             FrontArmor = frontArmor;
             MuzzleBraker = muzzleBraker;
@@ -35,14 +27,8 @@ namespace LabTP
         {
             Brush br = new SolidBrush(MainColor);
             base.DrawGun(g);
-            Point point1 = new Point((int)StartX - 40, (int)StartY + 10);
-            Point point2 = new Point((int)StartX + 40, (int)StartY + 10);
-            Point point3 = new Point((int)StartX + 45, (int)StartY + 25);
-            Point point4 = new Point((int)StartX - 45, (int)StartY + 25);
-            Point[] trapezePoints = { point1, point2, point3, point4 };
-            g.FillPolygon(br, trapezePoints);
+            Brush brBc = new SolidBrush(Color.Black);
 
-            Brush brBc = new SolidBrush(Color.Black);          
             Point pointG1 = new Point((int)StartX + 15, (int)StartY - 5);
             Point pointG2 = new Point((int)StartX + 35, (int)StartY - 25);
             Point pointG3 = new Point((int)StartX + 40, (int)StartY - 20);

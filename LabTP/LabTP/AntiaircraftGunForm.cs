@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +12,7 @@ namespace LabTP
 {
     public partial class AntiaircraftGunForm : Form
     {
-        private IAntiaircraftGun gun;
+        private AntiaircraftGun gun;
         public AntiaircraftGunForm()
         {
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace LabTP
         private void ButtonCreate_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            gun = new AntiaircraftGun(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.DarkGreen, Color.Gray, true, true, true);
+            gun = new AntiaircraftGun(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.DarkGreen, Color.Gray, true,true,true);
             gun.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxGun.Width, pictureBoxGun.Height);
             Draw();
         }
@@ -51,14 +51,6 @@ namespace LabTP
                     break;
             }
             Draw();
-        }
-
-        private void buttonCreateGun_Click(object sender, EventArgs e)
-        {
-            Random rnd = new Random();
-            gun = new Gun(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.DarkGreen);
-            gun.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxGun.Width, pictureBoxGun.Height);
-            Draw();
-        }
+        }      
     }
 }
