@@ -35,6 +35,7 @@
             this.pictureBoxTake = new System.Windows.Forms.PictureBox();
             this.buttonTakeGun = new System.Windows.Forms.Button();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.listBoxLevels = new System.Windows.Forms.ListBox();
             this.labelnumBase = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBase)).BeginInit();
             this.groupBoxGetGun.SuspendLayout();
@@ -146,5 +147,6 @@
         private System.Windows.Forms.Button buttonTakeGun;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.Label labelnumBase;
+        private System.Windows.Forms.ListBox listBoxLevels;
     }
 }
