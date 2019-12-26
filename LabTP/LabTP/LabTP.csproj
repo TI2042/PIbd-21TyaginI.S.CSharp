@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbGun.cs" />
     <Compile Include="AntiaircraftGun.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="AntiaircraftGunForm.cs">
@@ -54,6 +55,8 @@
     <Compile Include="AntiaircraftGunForm.Designer.cs">
       <DependentUpon>AntiaircraftGunForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gun.cs" />
+    <Compile Include="IAntiaircraftGun.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AntiaircraftGunForm.resx">

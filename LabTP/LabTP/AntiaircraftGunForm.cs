@@ -12,7 +12,7 @@ namespace LabTP
 {
     public partial class AntiaircraftGunForm : Form
     {
-        private AntiaircraftGun gun;
+        private IAntiaircraftGun gun;
         public AntiaircraftGunForm()
         {
             InitializeComponent();
@@ -53,5 +53,12 @@ namespace LabTP
             Draw();
         }
 
+        private void buttonCreateGun_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            gun = new Gun(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.DarkGreen);
+            gun.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxGun.Width, pictureBoxGun.Height);
+            Draw();
+        }
     }
 }
