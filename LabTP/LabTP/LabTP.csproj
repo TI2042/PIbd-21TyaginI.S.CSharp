@@ -76,6 +76,7 @@
     </Compile>
     <Compile Include="Gun.cs" />
     <Compile Include="IAntiaircraftGun.cs" />
+    <Compile Include="MultiLevelBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormBase.resx">

@@ -12,7 +12,7 @@ namespace LabTP
         private const int GunWidth = 100;
         private const int GunHidth = 60;
 
-        public Gun(int maxSpeed, float weight,Color mainColor)
+        public Gun(int maxSpeed, float weight, Color mainColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
@@ -45,10 +45,10 @@ namespace LabTP
             g.FillEllipse(brBc, StartX + 20, StartY + 20, 15, 15);
             g.FillRectangle(brBc, StartX, StartY, 10, 10);
 
-            Point pointG1 = new Point((int)StartX +10, (int)StartY - 15);
+            Point pointG1 = new Point((int)StartX + 10, (int)StartY - 15);
             Point pointG2 = new Point((int)StartX + 30, (int)StartY - 15);
             Point pointG3 = new Point((int)StartX + 30, (int)StartY - 10);
-            Point pointG4 = new Point((int)StartX + 10, (int)StartY-10);
+            Point pointG4 = new Point((int)StartX + 10, (int)StartY - 10);
             Point[] Guns = { pointG1, pointG2, pointG3, pointG4 };
             g.FillPolygon(brBc, Guns);
 

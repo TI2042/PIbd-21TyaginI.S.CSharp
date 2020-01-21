@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             this.pictureBoxBase = new System.Windows.Forms.PictureBox();
-
             this.groupBoxGetGun = new System.Windows.Forms.GroupBox();
             this.pictureBoxTake = new System.Windows.Forms.PictureBox();
-            this.buttonTakeGun = new System.Windows.Forms.Button();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
 
             this.labelNumBase= new System.Windows.Forms.Label();
@@ -58,14 +56,31 @@
             this.pictureBoxBase.Name = "pictureBoxBase";
             this.pictureBoxBase.Size = new System.Drawing.Size(1062, 588);
             this.pictureBoxBase.TabIndex = 0;
-            this.pictureBoxBase.TabStop = false;
+            this.pictureBoxBase.TabStop = false;     
+            // 
+            // buttonSetAntiaircraftGun
+            // 
+            this.buttonSetAntiaircraftGun.Location = new System.Drawing.Point(1070, 12);
+            this.buttonSetAntiaircraftGun.Name = "buttonSetAntiaircraftGun";
+            this.buttonSetAntiaircraftGun.Size = new System.Drawing.Size(167, 38);
+            this.buttonSetAntiaircraftGun.TabIndex = 1;
+            this.buttonSetAntiaircraftGun.Text = "Припаковать зенитку";
+            this.buttonSetAntiaircraftGun.UseVisualStyleBackColor = true;
+            // 
+            // buttonSetGun
+            // 
+            this.buttonSetGun.Location = new System.Drawing.Point(1071, 57);
+            this.buttonSetGun.Name = "buttonSetGun";
+            this.buttonSetGun.Size = new System.Drawing.Size(166, 35);
+            this.buttonSetGun.TabIndex = 2;
+            this.buttonSetGun.Text = "Припарковать бтр";
+            this.buttonSetGun.UseVisualStyleBackColor = true;
             // 
             // groupBoxGetGun
             // 
             this.groupBoxGetGun.Controls.Add(this.pictureBoxTake);
             this.groupBoxGetGun.Controls.Add(this.buttonTakeGun);
             this.groupBoxGetGun.Controls.Add(this.maskedTextBox);
-            this.groupBoxGetGun.Controls.Add(this.label1);
             this.groupBoxGetGun.Location = new System.Drawing.Point(1067, 310);
             this.groupBoxGetGun.Name = "groupBoxGetGun";
             this.groupBoxGetGun.Size = new System.Drawing.Size(181, 341);
@@ -81,6 +96,13 @@
             this.pictureBoxTake.TabIndex = 3;
             this.pictureBoxTake.TabStop = false;
             // 
+            // maskedTextBox
+            // 
+            this.maskedTextBox.Location = new System.Drawing.Point(75, 22);
+            this.maskedTextBox.Name = "maskedTextBox";
+            this.maskedTextBox.Size = new System.Drawing.Size(95, 22);
+            this.maskedTextBox.TabIndex = 1;
+            // 
             // buttonTakeGun
             // 
             this.buttonTakeGun.Location = new System.Drawing.Point(7, 70);
@@ -89,14 +111,13 @@
             this.buttonTakeGun.TabIndex = 2;
             this.buttonTakeGun.Text = "Забрать";
             this.buttonTakeGun.UseVisualStyleBackColor = true;
-            this.buttonTakeGun.Click += new System.EventHandler(this.buttonTakeGun_Click);
             // 
-            // maskedTextBox
+            // listBoxLevels
             // 
-            this.maskedTextBox.Location = new System.Drawing.Point(75, 22);
-            this.maskedTextBox.Name = "maskedTextBox";
-            this.maskedTextBox.Size = new System.Drawing.Size(95, 22);
-            this.maskedTextBox.TabIndex = 1;
+            this.listBoxLevels.Location = new System.Drawing.Point(0, 0);
+            this.listBoxLevels.Name = "listBoxLevels";
+            this.listBoxLevels.Size = new System.Drawing.Size(120, 96);
+            this.listBoxLevels.TabIndex = 0;
             // 
             // labelnumBase
             // 

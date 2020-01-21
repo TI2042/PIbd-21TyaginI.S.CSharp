@@ -33,6 +33,7 @@ namespace LabTP
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
         }
+
         public static int operator + (Base<T> p, T gun)
         {
             if (p._places.Count == p._maxCount)
@@ -57,32 +58,25 @@ namespace LabTP
 
         public static T operator -(Base<T> p, int index)
         {
-            if (index < 0 || index > p._places.Length)
-            {
-                return null;
-            }
             if (!p.CheckFreePlace(index))
             {
                 T gun = p._places[index];
-                p._places= null;
+                p._places.Remove(index);
                 return gun;
             }
             throw new BaseNotFoundException(index);
         }
         private bool CheckFreePlace(int index)
         {
-            return _places[index]==null;
+            return !_places.ContainsKey(index);
         }
         public void Draw(Graphics g)
         {
             DrawBase(g);
-            
-            for (int i = 0; i < _places.Length; i++)
+            var keys = _places.Keys.ToList();
+            for (int i = 0; i < keys.Count; i++)
             {
-                if (!CheckFreePlace(i))
-                {
-                    _places[i].DrawGun(g);
-                }
+                _places[keys[i]].DrawGun(g);
             }
         }
         private void DrawBase(Graphics g)
@@ -96,9 +90,10 @@ namespace LabTP
                     g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight,i * _placeSizeWidth + 110, j * _placeSizeHeight);
                 } 
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
+                g.DrawLine(pen, i * _placeSizeWidth + 110, 0, i * _placeSizeWidth + 110, 400);
             }
         }
-
+        
         public T this[int ind]
         {
             get
