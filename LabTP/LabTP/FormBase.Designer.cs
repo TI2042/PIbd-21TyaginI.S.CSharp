@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.pictureBoxBase = new System.Windows.Forms.PictureBox();
-            this.buttonSetAntiaircraftGun = new System.Windows.Forms.Button();
-            this.buttonSetGun = new System.Windows.Forms.Button();
             this.groupBoxGetGun = new System.Windows.Forms.GroupBox();
             this.pictureBoxTake = new System.Windows.Forms.PictureBox();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.buttonTakeGun = new System.Windows.Forms.Button();
+
+            this.labelNumBase= new System.Windows.Forms.Label();
             this.listBoxLevels = new System.Windows.Forms.ListBox();
-            this.labelnumBase = new System.Windows.Forms.Label();
+            this.labelLevels = new System.Windows.Forms.Label();
+            this.buttonAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBase)).BeginInit();
             this.groupBoxGetGun.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
@@ -48,8 +48,7 @@
             this.pictureBoxBase.Name = "pictureBoxBase";
             this.pictureBoxBase.Size = new System.Drawing.Size(1062, 641);
             this.pictureBoxBase.TabIndex = 0;
-            this.pictureBoxBase.TabStop = false;
-            
+            this.pictureBoxBase.TabStop = false;     
             // 
             // buttonSetAntiaircraftGun
             // 
@@ -72,6 +71,7 @@
             // groupBoxGetGun
             // 
             this.groupBoxGetGun.Controls.Add(this.pictureBoxTake);
+            this.groupBoxGetGun.Controls.Add(this.buttonTakeGun);
             this.groupBoxGetGun.Controls.Add(this.maskedTextBox);
             this.groupBoxGetGun.Location = new System.Drawing.Point(1067, 310);
             this.groupBoxGetGun.Name = "groupBoxGetGun";
@@ -120,17 +120,28 @@
             this.labelnumBase.TabIndex = 0;
             this.labelnumBase.Text = "№ базы";
             // 
+            // button1
+            // 
+            this.buttonAdd.Location = new System.Drawing.Point(1080, 13);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(145, 68);
+            this.buttonAdd.TabIndex = 6;
+            this.buttonAdd.Text = "Добавить";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonSetGun_Click);
+            // 
             // FormBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1249, 654);
+            this.Controls.Add(this.buttonAdd);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.groupBoxGetGun);
-            this.Controls.Add(this.buttonSetGun);
-            this.Controls.Add(this.buttonSetAntiaircraftGun);
             this.Controls.Add(this.pictureBoxBase);
             this.Name = "FormBase";
             this.Text = "FormBase";
+            
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBase)).EndInit();
             this.groupBoxGetGun.ResumeLayout(false);
             this.groupBoxGetGun.PerformLayout();
@@ -142,13 +153,13 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxBase;
-        private System.Windows.Forms.Button buttonSetAntiaircraftGun;
-        private System.Windows.Forms.Button buttonSetGun;
         private System.Windows.Forms.GroupBox groupBoxGetGun;
         private System.Windows.Forms.PictureBox pictureBoxTake;
         private System.Windows.Forms.Button buttonTakeGun;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
-        private System.Windows.Forms.Label labelnumBase;
+        private System.Windows.Forms.Label labelNumBase;
         private System.Windows.Forms.ListBox listBoxLevels;
+        private System.Windows.Forms.Label labelLevels;
+        private System.Windows.Forms.Button buttonAdd;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -27,6 +28,11 @@ namespace LabTP
             StartY = y;
             PictureWight = width;
             PictureHight = height;
+        }
+
+        public void SetMainColor(Color color)
+        {
+            MainColor = color;
         }
     }
 }

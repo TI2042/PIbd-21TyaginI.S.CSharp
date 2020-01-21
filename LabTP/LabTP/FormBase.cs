@@ -13,8 +13,10 @@ namespace LabTP
 {
     public partial class FormBase : Form
     {
+        FormGunConfig form;
         MultiLevelBase bs;
         private const int countLevel = 5;
+   
         public FormBase()
         {
             InitializeComponent();
@@ -105,6 +107,26 @@ namespace LabTP
         private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
+        }
+
+        private void buttonSetGun_Click(object sender, EventArgs e)
+        {
+            form = new FormGunConfig();
+            form.AddEvent(AddGun);
+            form.Show();
+        }
+
+        private void AddGun(IAntiaircraftGun gun)
+        {
+            if (gun != null && listBoxLevels.SelectedIndex > -1)
+            { int place = bs[listBoxLevels.SelectedIndex] *gun; if (place > -1)
+                { Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Машину неудалось поставить");
+                }
+            }
         }
     }
 }

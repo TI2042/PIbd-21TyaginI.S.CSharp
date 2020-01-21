@@ -12,5 +12,6 @@ namespace LabTP
         void SetPosition (int x, int y, int width, int height);
         void MoveGun(Direction direction);
         void DrawGun(Graphics g);
+        void SetMainColor(Color color);
     }
 }

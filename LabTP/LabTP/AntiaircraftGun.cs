@@ -9,7 +9,6 @@ namespace LabTP
 {
     class AntiaircraftGun : Gun
     {
-
         public Color DopColor { private set; get; }
         public bool FrontArmor { private set; get; }// передняя броня
         public bool MuzzleBraker { private set; get; }// дульный тормоз
@@ -62,6 +61,11 @@ namespace LabTP
                 Point[] mB = { pointM1, pointM2, pointM3, pointM4 };
                 g.FillPolygon(brGr, mB);
             }
+        }
+        
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
         }
     }
 }
