@@ -8,74 +8,103 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace LabTP
 {
     public partial class FormBase : Form
     {
-        Base<IAntiaircraftGun> bs;      
+        MultiLevelBase bs;
+        private const int countLevel = 5;
         public FormBase()
         {
             InitializeComponent();
-            bs = new Base<IAntiaircraftGun>(20, pictureBoxBase.Width, pictureBoxBase.Height);
-            Draw();            
+            bs = new MultiLevelBase(countLevel, pictureBoxBase.Width, pictureBoxBase.Height);
+            for (int i = 0; i < countLevel; i++)
+            {
+                listBoxLevels.Items.Add("Уровень " + (i + 1));
+            }
+            listBoxLevels.SelectedIndex = 0;
+
         }
         private void Draw()
-        {         
-            Bitmap bmp = new Bitmap(pictureBoxBase.Width, pictureBoxBase.Height);
-            Graphics gr = Graphics.FromImage(bmp);
-            bs.Draw(gr);
-            pictureBoxBase.Image = bmp;     
-        }
-        private void buttonSetGun_Click(object sender, EventArgs e)
-        {            
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+        {
+            if (listBoxLevels.SelectedIndex > -1)
             {
-                var gun = new Gun(100, 1000, dialog.Color);                  
-                int place = bs * gun;                    
-                Draw();
+                Bitmap bmp = new Bitmap(pictureBoxBase.Width, pictureBoxBase.Height);
+                Graphics gr = Graphics.FromImage(bmp);
+                bs[listBoxLevels.SelectedIndex].Draw(gr);
+                pictureBoxBase.Image = bmp;
             }
-            
+
         }
- 
-        private void buttonSetAntiaircraftGun_Click(object sender, EventArgs e)
-        {           
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+        private void buttonSetCar_Click(object sender, EventArgs e)
+        {
+            if (listBoxLevels.SelectedIndex > -1)
             {
-                ColorDialog dialogDop = new ColorDialog();
-                if (dialogDop.ShowDialog() == DialogResult.OK)
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    var gun = new AntiaircraftGun(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
-                    int place = bs * gun;
+                    var gun = new Gun(100, 1000, dialog.Color);
+
+                    int place = bs[listBoxLevels.SelectedIndex] * gun;
                     if (place == -1)
                     {
-                        MessageBox.Show("Нет свободныхмест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     Draw();
                 }
-            }         
+            }
         }
-        private void buttonTakeGun_Click(object sender, EventArgs e)
-        {            
-            if (maskedTextBox.Text != "")
+
+        private void buttonSetSportCar_Click(object sender, EventArgs e)
+        {
+            if (listBoxLevels.SelectedIndex > -1)
             {
-                var gun = bs / Convert.ToInt32(maskedTextBox.Text);
-                if (gun != null)
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
-                    Graphics gr = Graphics.FromImage(bmp);
-                    gun.SetPosition(50, 50, pictureBoxTake.Width, pictureBoxTake.Height);
-                    gun.DrawGun(gr);
-                    pictureBoxTake.Image = bmp;
+                    ColorDialog dialogDop = new ColorDialog();
+                    if (dialogDop.ShowDialog() == DialogResult.OK)
+                    {
+                        var gun = new AntiaircraftGun(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
+                        int place = bs[listBoxLevels.SelectedIndex] * gun;
+                        if (place == -1)
+                        {
+                            MessageBox.Show("Нет свободныхмест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        Draw();
+                    }
                 }
-                else
+            }
+        }
+        private void buttonTakeCar_Click(object sender, EventArgs e)
+        {
+            if (listBoxLevels.SelectedIndex > -1)
+            {
+                if (maskedTextBox.Text != "")
                 {
-                    Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
-                    pictureBoxTake.Image = bmp;
+                    var gun = bs[listBoxLevels.SelectedIndex] / Convert.ToInt32(maskedTextBox.Text);
+                    if (gun != null)
+                    {
+                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
+                        Graphics gr = Graphics.FromImage(bmp);
+                        gun.SetPosition(50, 50, pictureBoxTake.Width, pictureBoxTake.Height);
+                        gun.DrawGun(gr);
+                        pictureBoxTake.Image = bmp;
+                    }
+                    else
+                    {
+                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
+                        pictureBoxTake.Image = bmp;
+                    }
+                    Draw();
                 }
-                Draw();
-            }            
-        }     
+            }
+        }
+
+        private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Draw();
+        }
     }
 }

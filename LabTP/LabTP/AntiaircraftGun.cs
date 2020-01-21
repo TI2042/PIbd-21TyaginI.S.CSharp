@@ -28,7 +28,7 @@ namespace LabTP
             Brush br = new SolidBrush(MainColor);
             base.DrawGun(g);
             Brush brBc = new SolidBrush(Color.Black);
-
+            
             Point pointG1 = new Point((int)StartX + 15, (int)StartY - 5);
             Point pointG2 = new Point((int)StartX + 35, (int)StartY - 25);
             Point pointG3 = new Point((int)StartX + 40, (int)StartY - 20);
