@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,10 +17,11 @@ namespace LabTP
         FormGunConfig form;
         MultiLevelBase bs;
         private const int countLevel = 5;
-   
+        private Logger logger;
         public FormBase()
         {
             InitializeComponent();
+            logger = LogManager.GetCurrentClassLogger();    
             bs = new MultiLevelBase(countLevel, pictureBoxBase.Width, pictureBoxBase.Height);
             for(int i =0;i<countLevel;i++)
             {
@@ -45,7 +47,7 @@ namespace LabTP
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     var gun = new Gun(100, 1000, dialog.Color);
-                    int place = bs[listBoxLevels.SelectedIndex] * gun;
+                    int place = bs[listBoxLevels.SelectedIndex] + gun;
                     if (place == -1)
                     {
                         MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -66,7 +68,7 @@ namespace LabTP
                     if (dialogDop.ShowDialog() == DialogResult.OK)
                     {
                         var gun = new AntiaircraftGun(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
-                        int place = bs[listBoxLevels.SelectedIndex] * gun;
+                        int place = bs[listBoxLevels.SelectedIndex] + gun;
                         if (place == -1)
                         {
                             MessageBox.Show("Нет свободныхмест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -82,21 +84,30 @@ namespace LabTP
             {
                 if (maskedTextBox.Text != "")
                 {
-                    var gun = bs[listBoxLevels.SelectedIndex] / Convert.ToInt32(maskedTextBox.Text);
-                    if (gun != null)
+                    try
                     {
+                        var gun = bs[listBoxLevels.SelectedIndex] - Convert.ToInt32(maskedTextBox.Text);
+                        
+                            Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
+                            Graphics gr = Graphics.FromImage(bmp);
+                            gun.SetPosition(50, 50, pictureBoxTake.Width, pictureBoxTake.Height);
+                            gun.DrawGun(gr);
+                            pictureBoxTake.Image = bmp;
+                            logger.Info("Изъята техника" + gun.ToString() + " с места" + maskedTextBox.Text);
+
+                        Draw();
+                    }
+                    catch (BaseNotFoundException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
-                        Graphics gr = Graphics.FromImage(bmp);
-                        gun.SetPosition(50, 50, pictureBoxTake.Width, pictureBoxTake.Height);
-                        gun.DrawGun(gr);
                         pictureBoxTake.Image = bmp;
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        Bitmap bmp = new Bitmap(pictureBoxTake.Width, pictureBoxTake.Height);
-                        pictureBoxTake.Image = bmp;
+                        logger.Error("");
+                        MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    Draw();
                 }
             }
         }
@@ -116,12 +127,20 @@ namespace LabTP
         private void AddGun(IAntiaircraftGun gun)
         {
             if (gun != null && listBoxLevels.SelectedIndex > -1)
-            { int place = bs[listBoxLevels.SelectedIndex] *gun; if (place > -1)
-                { Draw();
-                }
-                else
+            {
+                try
                 {
-                    MessageBox.Show("Машину неудалось поставить");
+                    int place = bs[listBoxLevels.SelectedIndex] +gun;
+                    logger.Info("Добавлена техника" + gun.ToString() + " на место" + place);
+                    Draw();
+                }
+                catch (BaseOverflowException ex)
+                {
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -129,13 +148,19 @@ namespace LabTP
         {
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (bs.SaveData(saveFileDialog.FileName))
+                try
                 {
+                    bs.SaveData(saveFileDialog.FileName);
+
                     MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
+
+
                     MessageBox.Show("Не сохранилось", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Info("Сохранено в файл" + saveFileDialog.FileName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -144,13 +169,21 @@ namespace LabTP
         {
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (bs.LoadData(openFileDialog.FileName))
+                try
                 {
+                    bs.LoadData(openFileDialog.FileName);
+                    
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла" + openFileDialog.FileName);            
+                   
                 }
-                else
+                catch (BaseOccupiedPlaceException ex)
                 {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Занятоеместо", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестнаяошибкаприсохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 Draw();
             }

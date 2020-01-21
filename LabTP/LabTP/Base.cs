@@ -23,25 +23,26 @@ namespace LabTP
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
         }
-        public static int operator *(Base<T> p, T gun)
+
+        public static int operator + (Base<T> p, T gun)
         {
             if (p._places.Count == p._maxCount)
             {
-                return -1;
+                throw new BaseOverflowException();
             }
             for (int i = 0; i < p._maxCount; i++)
             {
                 if (p.CheckFreePlace(i))
                 {
-                    p._places.Add(i, gun);
-                    p._places[i].SetPosition(30 + i / 30 * _placeSizeWidth + 30, i % 30 * _placeSizeHeight + 40, p.PictureWidth, p.PictureHeight);
+                    p._places.Add(i,gun);
+                    p._places[i].SetPosition(5 + i / 5 * _placeSizeWidth + 30,i % 5 * _placeSizeHeight + 50, p.PictureWidth, p.PictureHeight);
                     return i;
                 }
             }
             return -1;
         }
 
-        public static T operator /(Base<T> p, int index)
+        public static T operator -(Base<T> p, int index)
         {
             if (!p.CheckFreePlace(index))
             {
@@ -49,7 +50,7 @@ namespace LabTP
                 p._places.Remove(index);
                 return gun;
             }
-            return null;
+            throw new BaseNotFoundException(index);
         }
         private bool CheckFreePlace(int index)
         {
@@ -94,7 +95,7 @@ namespace LabTP
                 if (CheckFreePlace(ind))
                 {
                     _places.Add(ind, value);
-                    _places[ind].SetPosition(50 + ind / 50 * _placeSizeWidth + 5, ind % 5 * _placeSizeHeight + 35, PictureWidth, PictureHeight);
+                    _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 50, ind % 5 * _placeSizeHeight + 35, PictureWidth, PictureHeight);
                 }
             }
         }

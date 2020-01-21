@@ -193,7 +193,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormBase";
             this.Text = "FormBase";
-
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBase)).EndInit();
             this.groupBoxGetGun.ResumeLayout(false);
             this.groupBoxGetGun.PerformLayout();
