@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace LabTP
 {
     public partial class FormBase : Form
@@ -29,16 +30,8 @@ namespace LabTP
             listBoxLevels.SelectedIndex = 0;
         }
         private void Draw()
-        {         
-            Bitmap bmp = new Bitmap(pictureBoxBase.Width, pictureBoxBase.Height);
-            Graphics gr = Graphics.FromImage(bmp);
-            bs.Draw(gr);
-            pictureBoxBase.Image = bmp;     
-        }
-        private void buttonSetGun_Click(object sender, EventArgs e)
-        {            
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+        {
+            if (listBoxLevels.SelectedIndex > -1)
             {
                 Bitmap bmp = new Bitmap(pictureBoxBase.Width, pictureBoxBase.Height);
                 Graphics gr = Graphics.FromImage(bmp);
@@ -46,31 +39,30 @@ namespace LabTP
                 pictureBoxBase.Image = bmp;
             }
         }
- 
-        private void buttonSetAntiaircraftGun_Click(object sender, EventArgs e)
-        {           
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == DialogResult.OK)
+        private void buttonSetCar_Click(object sender, EventArgs e)
+        {
+            if (listBoxLevels.SelectedIndex > -1)
             {
-                ColorDialog dialogDop = new ColorDialog();
-                if (dialogDop.ShowDialog() == DialogResult.OK)
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     var gun = new Gun(100, 1000, dialog.Color);
                     int place = bs[listBoxLevels.SelectedIndex] + gun;
                     if (place == -1)
                     {
-                        MessageBox.Show("Нет свободныхмест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Нет свободных мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     Draw();
                 }
-            }         
+            }
         }
+        
         private void buttonSetSportCar_Click(object sender, EventArgs e)
         {
             if (listBoxLevels.SelectedIndex > -1)
             {
-                var gun = bs / Convert.ToInt32(maskedTextBox.Text);
-                if (gun != null)
+                ColorDialog dialog = new ColorDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     ColorDialog dialogDop = new ColorDialog();
                     if (dialogDop.ShowDialog() == DialogResult.OK)
@@ -84,7 +76,13 @@ namespace LabTP
                         Draw();
                     }
                 }
-                else
+            }
+        }
+        private void buttonTakeCar_Click(object sender, EventArgs e)
+        {
+            if (listBoxLevels.SelectedIndex > -1)
+            {
+                if (maskedTextBox.Text != "")
                 {
                     try
                     {
