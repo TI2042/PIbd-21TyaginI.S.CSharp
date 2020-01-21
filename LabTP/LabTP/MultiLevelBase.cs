@@ -26,9 +26,12 @@ namespace LabTP
                 if(ind > -1 && ind< baseStages.Count)
                 {
                     return baseStages[ind];
+
                 }
                 return null;
             }
         }
-    }    
+
+    }
+    
 }
