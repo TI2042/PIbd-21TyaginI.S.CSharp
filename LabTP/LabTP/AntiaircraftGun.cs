@@ -23,7 +23,6 @@ namespace LabTP
             Radar = radar;
         }
 
-
         public override void DrawGun(Graphics g)
         {
             Brush br = new SolidBrush(MainColor);
