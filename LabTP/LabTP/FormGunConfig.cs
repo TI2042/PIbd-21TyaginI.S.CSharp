@@ -105,7 +105,7 @@ namespace LabTP
                 case "БТР":
                     gun = new Gun(100, 500, Color.White);
                     break;
-                
+
             }
             DrawGun();
         }
@@ -122,6 +122,6 @@ namespace LabTP
         {
             eventAddGun?.Invoke(gun);
             Close();
-        }    
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿
+﻿using LabTP;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -21,7 +21,7 @@ namespace LabTP
         public abstract void DrawGun(Graphics g);
 
         public abstract void MoveGun(Direction direction);
-       
+        
         public void SetPosition(int x, int y, int width, int height)
         {
             StartX = x;

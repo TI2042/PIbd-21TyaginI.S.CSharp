@@ -22,7 +22,6 @@ namespace LabTP
             _places = new Dictionary<int, T>();
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
-
         }
         public static int operator *(Base<T> p, T gun)
         {
@@ -68,16 +67,35 @@ namespace LabTP
         private void DrawBase(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 3);
-
             g.DrawRectangle(pen, 0, 0, (_maxCount / 5) * _placeSizeWidth, 480);
             for (int i = 0; i < _maxCount / 5; i++)
             {
+
                 for (int j = 0; j < 6; ++j)
                 {
-                    g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight, i * _placeSizeWidth + 110, j * _placeSizeHeight);
-                }
+                    g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight,i * _placeSizeWidth + 110, j * _placeSizeHeight);
+                } 
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, 400);
                 g.DrawLine(pen, i * _placeSizeWidth + 110, 0, i * _placeSizeWidth + 110, 400);
+            }
+        }
+        
+        public T this[int ind]
+        { get
+            {
+                if (_places.ContainsKey(ind))
+                {
+                    return _places[ind];
+                }
+                return null;
+            }
+            set
+            {
+                if (CheckFreePlace(ind))
+                {
+                    _places.Add(ind, value);
+                    _places[ind].SetPosition(50 + ind / 50 * _placeSizeWidth + 5, ind % 5 * _placeSizeHeight + 35, PictureWidth, PictureHeight);
+                }
             }
         }
     }

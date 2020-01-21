@@ -19,6 +19,17 @@ namespace LabTP
             MainColor = mainColor;
         }
 
+        public Gun(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
+        }
+
         public override void DrawGun(Graphics g)
         {
             Brush br = new SolidBrush(MainColor);
@@ -79,6 +90,11 @@ namespace LabTP
                     }
                     break;
             }
+        }
+
+        public override string ToString()
+        {
+            return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
         }
     }
 }

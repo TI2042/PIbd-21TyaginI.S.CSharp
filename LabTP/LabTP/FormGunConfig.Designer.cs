@@ -251,8 +251,7 @@
             this.Controls.Add(this.panelGun);
             this.Controls.Add(this.groupBoxType);
             this.Name = "FormGunConfig";
-            this.Text = "FormGunConfig";
-           
+            this.Text = "FormGunConfig";         
             this.groupBoxType.ResumeLayout(false);
             this.panelGun.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGun)).EndInit();
