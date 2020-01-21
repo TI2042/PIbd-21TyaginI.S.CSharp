@@ -138,6 +138,10 @@ namespace LabTP
                 {
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                catch (BaseAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -187,6 +191,13 @@ namespace LabTP
                 }
                 Draw();
             }
+        }
+        
+        private void btnSort_Click(object sender, EventArgs e)
+        {
+            bs.Sort();
+            Draw();
+            logger.Info("Сортировка уровней");
         }
     }
 }

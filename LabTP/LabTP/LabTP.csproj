@@ -57,6 +57,7 @@
     <Compile Include="AbGun.cs" />
     <Compile Include="AntiaircraftGun.cs" />
     <Compile Include="Base.cs" />
+    <Compile Include="BaseAlreadyHaveException.cs" />
     <Compile Include="BaseNotFoundException.cs" />
     <Compile Include="BaseOccupiedPlaceException.cs" />
     <Compile Include="BaseOverflowException.cs" />

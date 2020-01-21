@@ -43,6 +43,7 @@
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.btnSort = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBase)).BeginInit();
             this.groupBoxGetGun.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTake)).BeginInit();
@@ -120,12 +121,13 @@
             // 
             // labelnumBase
             // 
-            this.labelnumBase.AutoSize = true;
-            this.labelnumBase.Location = new System.Drawing.Point(7, 22);
-            this.labelnumBase.Name = "labelnumBase";
-            this.labelnumBase.Size = new System.Drawing.Size(59, 17);
-            this.labelnumBase.TabIndex = 0;
-            this.labelnumBase.Text = "№ базы";
+            this.listBoxLevels.FormattingEnabled = true;
+            this.listBoxLevels.ItemHeight = 16;
+            this.listBoxLevels.Location = new System.Drawing.Point(1077, 140);
+            this.listBoxLevels.Name = "listBoxLevels";
+            this.listBoxLevels.Size = new System.Drawing.Size(148, 116);
+            this.listBoxLevels.TabIndex = 4;
+            this.listBoxLevels.SelectedIndexChanged += new System.EventHandler(this.listBoxLevels_SelectedIndexChanged);
             // 
             // buttonAdd
             // 
@@ -180,12 +182,24 @@
             // 
             this.saveFileDialog.Filter = "txt file | *.txt";
             // 
+            // btnSort
+            // 
+            this.btnSort.Location = new System.Drawing.Point(1077, 268);
+            this.btnSort.Name = "btnSort";
+            this.btnSort.Size = new System.Drawing.Size(148, 36);
+            this.btnSort.TabIndex = 8;
+            this.btnSort.Text = "Сортировать";
+            this.btnSort.UseVisualStyleBackColor = true;
+            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
+            // 
             // FormBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1249, 654);
+            this.Controls.Add(this.btnSort);
             this.Controls.Add(this.buttonAdd);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelLavels);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.groupBoxGetGun);
             this.Controls.Add(this.pictureBoxBase);
@@ -219,5 +233,6 @@
         private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.Button btnSort;
     }
 }

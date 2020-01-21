@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,14 +8,23 @@ using System.Threading.Tasks;
 
 namespace LabTP
 {
-    public class Base<T> where T: class, IAntiaircraftGun
+    public class Base<T> : IEnumerator<T>, IEnumerable<T>, IComparable<Base<T>> where T: class, IAntiaircraftGun
     {
         private Dictionary<int, T> _places;
         private int PictureWidth { get; set; }
         private int PictureHeight { get; set; }
+        private int _currentIndex;
         private const int _placeSizeWidth = 210;
         private const int _placeSizeHeight = 80;
         private int _maxCount;
+
+        public int GetKey
+        {
+            get
+            {
+                return _places.Keys.ToList()[_currentIndex];
+            }
+        }
 
         public Base(int sizes, int pictureWidth, int pictureHeight)
         {
@@ -30,12 +40,16 @@ namespace LabTP
             {
                 throw new BaseOverflowException();
             }
+            if (p._places.ContainsValue(gun))
+            {
+                throw new BaseAlreadyHaveException();
+            }
             for (int i = 0; i < p._maxCount; i++)
             {
                 if (p.CheckFreePlace(i))
                 {
                     p._places.Add(i,gun);
-                    p._places[i].SetPosition(5 + i / 5 * _placeSizeWidth + 30,i % 5 * _placeSizeHeight + 50, p.PictureWidth, p.PictureHeight);
+                    p._places[i].SetPosition(20 + i / 5 * _placeSizeWidth + 30,i % 5 * _placeSizeHeight + 45, p.PictureWidth, p.PictureHeight);
                     return i;
                 }
             }
@@ -71,7 +85,6 @@ namespace LabTP
             g.DrawRectangle(pen, 0, 0, (_maxCount / 5) * _placeSizeWidth, 480);
             for (int i = 0; i < _maxCount / 5; i++)
             {
-
                 for (int j = 0; j < 6; ++j)
                 {
                     g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight,i * _placeSizeWidth + 110, j * _placeSizeHeight);
@@ -82,7 +95,8 @@ namespace LabTP
         }
         
         public T this[int ind]
-        { get
+        {
+            get
             {
                 if (_places.ContainsKey(ind))
                 {
@@ -98,6 +112,89 @@ namespace LabTP
                     _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 50, ind % 5 * _placeSizeHeight + 35, PictureWidth, PictureHeight);
                 }
             }
+        }
+        public T Current
+        {
+            get
+            {
+                return _places[_places.Keys.ToList()[_currentIndex]];
+            }
+        }
+
+        object IEnumerator.Current
+        {
+            get
+            {
+                return Current;
+            }
+        }
+
+        public void Dispose()
+        {
+            _places.Clear();
+        }
+
+        public bool MoveNext()
+        {
+            if (_currentIndex + 1 >= _places.Count)
+            {
+                Reset();
+                return false;
+            }
+            _currentIndex++;
+            return true;
+        }
+
+        public void Reset()
+        {
+            _currentIndex = -1;
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public int CompareTo(Base<T> other)
+        {
+            if (_places.Count > other._places.Count)
+            {
+                return -1;
+            }
+            else if(_places.Count < other._places.Count)
+            {
+                return 1;
+            }
+            else if(_places.Count > 0)
+            {
+                var thisKeys = _places.Keys.ToList();
+                var otherKeys = other._places.Keys.ToList();
+                for (int i = 0; i < _places.Count; ++i)
+                {
+                    if (_places[thisKeys[i]] is Gun && other._places[thisKeys[i]] is AntiaircraftGun)
+                    {
+                        return 1;
+                    }
+                    if (_places[thisKeys[i]] is AntiaircraftGun && other._places[thisKeys[i]] is Gun)
+                    {
+                        return -1;
+                    }
+                    if (_places[thisKeys[i]] is Gun && other._places[thisKeys[i]] is Gun)
+                    {
+                        return (_places[thisKeys[i]] is Gun).CompareTo(other._places[thisKeys[i]] is Gun);
+                    }
+                    if (_places[thisKeys[i]] is AntiaircraftGun && other._places[thisKeys[i]] is AntiaircraftGun)
+                    {
+                        return (_places[thisKeys[i]] is AntiaircraftGun).CompareTo(other._places[thisKeys[i]] is AntiaircraftGun);
+                    }
+                }
+            }
+            return 0;
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LabTP
 {
-    class AntiaircraftGun : Gun
+    class AntiaircraftGun : Gun, IComparable<AntiaircraftGun>, IEquatable<AntiaircraftGun>
     {
         public Color DopColor { private set; get; }
         public bool FrontArmor { private set; get; }// передняя броня
@@ -86,6 +86,82 @@ namespace LabTP
         public override string ToString()
         {
             return base.ToString() + ";" + DopColor.Name + ";" + FrontArmor  + ";" + MuzzleBraker + ";" + Radar;
+        }
+
+        public int CompareTo(AntiaircraftGun other)
+        {
+            var res = (this is Gun).CompareTo(other is Gun);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (DopColor != other.DopColor)
+            {
+                DopColor.Name.CompareTo(other.DopColor.Name);
+            }
+            if (FrontArmor != other.FrontArmor)
+            {
+                return FrontArmor.CompareTo(other.FrontArmor);
+            }
+            if (MuzzleBraker != other.MuzzleBraker)
+            {
+                return MuzzleBraker.CompareTo(other.MuzzleBraker);
+            }
+            if (Radar != other.Radar)
+            {
+                return Radar.CompareTo(other.Radar);
+            }
+            return 0;
+        }
+
+        public bool Equals(AntiaircraftGun other)
+        {
+            var res = (this as Gun).Equals(other as Gun);
+            if (!res)
+            {
+                return res;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (FrontArmor != other.FrontArmor)
+            {
+                return false;
+            }
+            if (MuzzleBraker != other.MuzzleBraker)
+            {
+                return false;
+            }
+            if (Radar != other.Radar)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is AntiaircraftGun antiGunObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(antiGunObj);
+            }
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }
